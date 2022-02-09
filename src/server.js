@@ -5,7 +5,7 @@ import {
 } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
-
+import '../config.js'
 import schema from './modules/index.js'
 
 

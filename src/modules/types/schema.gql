@@ -1,0 +1,4 @@
+type Response1 {
+    message: String!,
+    data: Category
+}

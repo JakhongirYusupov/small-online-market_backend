@@ -1,3 +1,14 @@
 type Query {
-    category: String!
+    categories: [Category!]!
+}
+
+type Mutation {
+    addcategory (category_name: String!): Response1!
+    editcategory (category_id: Int! category_name: String!): Response1!,
+    deletecategory (category_id: Int!): Response1!
+}
+
+type Category {
+    category_id: Int!
+    category_name: String!
 }
