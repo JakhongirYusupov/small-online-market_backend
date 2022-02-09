@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@graphql-tools/schema": "^8.3.1",
+    "apollo-server-express": "^3.6.3",
+    "express": "^4.17.2",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "name": "small-online-store",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --ext * src/server.js"
+  },
+  "keywords": [],
+  "author": "Jakhongir Yusupov",
+  "license": "ISC",
+  "description": ""
+}
