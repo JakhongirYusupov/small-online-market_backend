@@ -2,12 +2,24 @@ type Query {
     products: [Products!]!
 }
 
+type Mutation {
+    addproduct (category_id: Int!
+    product_name: String!
+    product_price: Int!
+    product_short_desc: String! 
+    product_long_desc: String!
+    file: Upload!
+    ): Response2!
+
+    deleteproduct (product_id: Int!): Response2!
+}
+
 type Products {
-    product_id: Int!,
-    category_id: Int!,
-    product_name: String!,
-    product_price: Int!,
-    product_short_desc: String!,
-    product_long_desc: String!,
+    product_id: Int!
+    category_id: Int!
+    product_name: String!
+    product_price: Int!
+    product_short_desc: String!
+    product_long_desc: String!
     product_picture: String!
 }

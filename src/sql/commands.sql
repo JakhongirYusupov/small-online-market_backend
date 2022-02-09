@@ -98,5 +98,25 @@ delete from categories where category_id = 3;
 
 --catefory
 
-update categories set category_name = 'clothes' where category_id = 2;
+-- select  * from categories;
 
+-- insert into categories (category_name) values ($1)
+-- returning category_id, category_name;
+
+-- update categories set category_name = $1 where category_id = $2
+-- returning category_id, category_name;
+
+-- delete from categories where category_id = $1
+-- returning true;
+
+
+--products
+
+-- select * from products;
+
+-- insert into products (
+--     category_id, product_name, product_price, product_short_desc, product_long_desc, product_picture
+--     ) values
+-- ($1, $2, $3, $4, $5, $6);
+
+-- delete from products where product_id = $1 returning product_picture;

@@ -2,3 +2,10 @@ type Response1 {
     message: String!,
     data: Category
 }
+
+type Response2 {
+    message: String!,
+    data: Products
+}
+
+scalar Upload

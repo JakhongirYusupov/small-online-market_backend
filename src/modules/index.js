@@ -13,6 +13,7 @@ export default makeExecutableSchema({
     ],
     resolvers: [
         CategoryModule.resolvers,
-        ProdectModule.resolvers
+        ProdectModule.resolvers,
+        TypesModule.resolvers
     ]
 })
