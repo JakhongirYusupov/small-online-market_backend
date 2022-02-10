@@ -12,7 +12,6 @@ import { join } from 'path'
 import http from 'http';
 
 
-
 ; (async function startApolloServer() {
     const app = express();
 
@@ -21,6 +20,9 @@ import http from 'http';
 
     const httpServer = http.createServer(app);
     const server = new ApolloServer({
+        context: ({ req }) => {
+            return req.headers
+        },
         schema,
         plugins: [ApolloServerPluginDrainHttpServer({ httpServer }),
         ApolloServerPluginLandingPageGraphQLPlayground()],

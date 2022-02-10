@@ -1,0 +1,10 @@
+type Mutation {
+    register (user_name:String! user_password: Password! user_contact: Contact! user_email:Email!): Response5!
+}
+
+type User {
+    user_id: Int!
+    user_name: String!
+    user_contact: Contact!
+    user_email: Email!
+}

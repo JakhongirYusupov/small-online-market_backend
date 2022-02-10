@@ -4,18 +4,28 @@ type Response1 {
 }
 
 type Response2 {
-    message: String!,
+    message: String!
     data: Products
 }
 
 type Response3 {
-    message: String!,
+    message: String!
     data: Orders
 }
 
 type Response4 {
-    message: String!,
+    message: String!
     data: OrderProduct
 }
 
+type Response5 {
+    message: String!
+    token: String!
+    data: User
+}
+
+
+scalar Email
 scalar Upload
+scalar Contact
+scalar Password
