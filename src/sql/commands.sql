@@ -75,8 +75,8 @@ insert into products (
 insert into users (user_name, user_password, user_contact, user_email) values
 ('jakhongir', crypt('jahon2001', gen_salt('bf')), '99899 965 03 18', 'jahon@gmail.com');
 
-insert into orders (user_id) values (1);
-insert into korzina values (1,1), (1,4);
+insert into orders (user_id, ispaid) values (1, true);
+insert into korzina values (2,1), (2,4);
 
 select 
     o.order_id,
@@ -88,6 +88,16 @@ left join korzina k on o.order_id = k.order_id
 group by o.order_id;
 
 delete from categories where category_id = 3;
+
+
+insert into orders (user_id) values (
+    select
+        order.user_id
+        case 
+            when ispaid != false then order.user_id
+        end
+    from orders when order_id.user_id = 1
+);
 
 
 
@@ -120,3 +130,10 @@ delete from categories where category_id = 3;
 -- ($1, $2, $3, $4, $5, $6);
 
 -- delete from products where product_id = $1 returning product_picture;
+
+
+--orders
+
+-- select * from orders;
+
+

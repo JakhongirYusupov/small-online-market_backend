@@ -8,4 +8,14 @@ type Response2 {
     data: Products
 }
 
+type Response3 {
+    message: String!,
+    data: Orders
+}
+
+type Response4 {
+    message: String!,
+    data: OrderProduct
+}
+
 scalar Upload
