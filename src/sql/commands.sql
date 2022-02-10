@@ -72,8 +72,8 @@ insert into products (
 
 
 --------TESTING
-insert into users (user_name, user_password, user_contact, user_email) values
-('jakhongir', crypt('jahon2001', gen_salt('bf')), '99899 965 03 18', 'jahon@gmail.com');
+insert into users (user_name, user_password, user_contact, user_email, user_role) values
+('admin', crypt('admin$2001', gen_salt('bf')), '998999650318', 'jahon@gmail.com', true);
 
 insert into orders (user_id, ispaid) values (1, true);
 insert into korzina values (2,1), (2,4);

@@ -1,4 +1,4 @@
-type Mutation {
+type Query {
     register (user_name:String! user_password: Password! user_contact: Contact! user_email:Email!): Response5!
 }
 

@@ -20,7 +20,7 @@ type Response4 {
 
 type Response5 {
     message: String!
-    token: String!
+    token: String
     data: User
 }
 
