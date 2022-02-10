@@ -1,0 +1,24 @@
+type Query {
+    orders: [Orders]!
+}
+
+type Mutation {
+    addorder (user_id: Int!) : Response3!
+    addorderproduct (order_id: Int! product_id: Int!): Response4!
+    deleteorderproduct (order_id: Int! product_id: Int!): Response4!
+    deleteorder (order_id: Int!): Response3!
+}
+
+type Orders {
+    order_id: Int!
+    user_id: Int!
+    order_time: String!
+    products: [Int]
+    ispaid: Boolean!
+}
+
+type OrderProduct {
+    order_id: Int!
+    product_id: Int!
+}
+
