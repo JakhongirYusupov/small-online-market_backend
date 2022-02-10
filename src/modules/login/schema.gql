@@ -1,4 +1,7 @@
 type Query {
     userlogin (user_name: String! user_password: Password!): Response5!
     adminlogin (user_name: String! user_password: Password!): Response5!
+    statistics: Any
 }
+
+scalar Any

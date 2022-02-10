@@ -101,6 +101,16 @@ insert into orders (user_id) values (
 
 
 
+select 
+    o.*,
+    sum(k.product_id)
+from orders o
+left join korzina k on o.order_id = k.order_id
+where o.ispaid = true
+group by o.order_id;
+
+
+
 
 
 

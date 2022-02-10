@@ -40,7 +40,7 @@ export default {
                 if (context.token) {
                     const user = verify(context.token)
                     if (user) {
-                        const [data] = await model(MODELS.USER, user.user_id, user.user_name)
+                        const [data] = await model(MODELS.USERADMIN, user.user_id, user.user_name)
                         if (data) {
                             return {
                                 message: "You are already adminlogin!",
@@ -59,6 +59,27 @@ export default {
                     token: sign(data),
                     data
                 }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
+        statistics: async (_, args, context) => {
+            try {
+                if (context.token) {
+                    const user = verify(context.token)
+                    if (user) {
+                        const [data] = await model(MODELS.USERADMIN, user.user_id, user.user_name)
+                        if (data) {
+                            const statistics = await model(MODELS.STATISTICS)
+                            if (statistics) return statistics
+                            return { message: "Not foun any orders" }
+                        }
+                    }
+                }
+
+                return { message: "You are not admin. Before login admin!" }
+
             } catch (error) {
                 console.log(error);
             }

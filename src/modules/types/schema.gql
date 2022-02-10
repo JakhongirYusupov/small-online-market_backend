@@ -25,6 +25,11 @@ type Response5 {
 }
 
 
+input Pagination {
+	page: Int = 1
+	limit: Int = 5
+}
+
 scalar Email
 scalar Upload
 scalar Contact

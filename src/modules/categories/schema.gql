@@ -1,5 +1,5 @@
 type Query {
-    categories: [Category!]!
+    categories(pagination: Pagination = {}): [Category!]!
 }
 
 type Mutation {

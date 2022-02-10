@@ -14,9 +14,51 @@ const DELETE = `
 delete from products where product_id = $1 returning product_picture;
 `
 
+const UPDATE = `
+update products p set 
+category_id = (
+    case when length($1) > 0 then $1 else p.category_id end
+), 
+product_name = (
+    case when length($2) > 0 then $2 else p.product_name end
+),
+product_price = (
+    case when length($3) > 0 then $3 else p.product_price end
+),
+product_short_desc = (
+    case when length($4) > 0 then $4 else p.product_short_desc end
+),
+product_long_desc = (
+    case when length($5) > 0 then $5 else p.product_long_desc end
+),
+product_picture = (
+    case when length($6) > 0 then $6 else p.product_picture end
+)   
+where p.product_id = $7 returning *;
+`
+
+const GETPRODUCTIMAGE = `
+select 
+    product_picture
+from products where product_id = $1
+`
+
+const SEARCH = `
+select 
+    * 
+from products where
+case
+    when length($1) > 0 then (
+    	product_name ilike concat('%', $1, '%')
+    ) else true
+end;
+`
+
 export default {
+    GETPRODUCTIMAGE,
+    SEARCH,
     SELECT,
     INSERT,
-    // UPDATE,
+    UPDATE,
     DELETE
 }

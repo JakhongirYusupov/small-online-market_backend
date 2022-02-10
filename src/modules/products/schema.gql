@@ -1,5 +1,6 @@
 type Query {
-    products: [Products!]!
+    products(pagination: Pagination = {}): [Products!]!
+    searchproducts(product_name:String! pagination: Pagination = {}): [Products!]!
 }
 
 type Mutation {
@@ -12,6 +13,16 @@ type Mutation {
     ): Response2!
 
     deleteproduct (product_id: Int!): Response2!
+
+    editproduct (
+    category_id: Int
+    product_name: String
+    product_price: Int
+    product_short_desc: String
+    product_long_desc: String
+    file: Upload
+    product_id: Int
+    ): Response2!
 }
 
 type Products {

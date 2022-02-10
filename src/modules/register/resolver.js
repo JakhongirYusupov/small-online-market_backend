@@ -8,7 +8,6 @@ export default {
         register: async (_, { user_name, user_password, user_contact, user_email }, context) => {
             try {
                 if (context.token) {
-                    console.log(context.token);
                     const user = verify(context.token)
                     if (user) {
                         const [data] = await model(MODELS.USER, user.user_id, user.user_name)

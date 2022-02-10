@@ -1,12 +1,14 @@
 type Query {
     orders: [Orders]!
+    seeownorder (order_id: Int pagination: Pagination = {}): Any
 }
 
 type Mutation {
-    addorder (user_id: Int!) : Response3!
+    addorder : Response3!
     addorderproduct (order_id: Int! product_id: Int!): Response4!
     deleteorderproduct (order_id: Int! product_id: Int!): Response4!
-    deleteorder (order_id: Int!): Response3!
+    deleteorder (order_id: Int!): Response3!,
+    payorder (order_id: Int!): Any
 }
 
 type Orders {

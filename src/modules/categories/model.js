@@ -17,9 +17,16 @@ delete from categories where category_id = $1
 returning true;
 `
 
+const LOGIN = `
+select 
+    * 
+from users where user_id = $1 and user_name = $2 and user_role = true;
+`
+
 export default {
     SELECT,
     INSERT,
     UPDATE,
-    DELETE
+    DELETE,
+    LOGIN
 }
