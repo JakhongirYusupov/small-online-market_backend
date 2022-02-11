@@ -18,7 +18,6 @@ export default {
         searchproducts: async (_, { product_name, pagination: { page, limit } }) => {
             try {
                 const data = await model(MODELS.SEARCH, product_name)
-                console.log(data);
                 return data.slice(page * limit - limit, page * limit)
 
             } catch (error) {

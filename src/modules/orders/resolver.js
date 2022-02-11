@@ -34,7 +34,6 @@ export default {
                     const user = verify(context.token)
                     if (user) {
                         const [data] = await model(MODELS.USER, user.user_id, user.user_name)
-                        console.log(data);
                         if (data) {
                             const order = await model(MODELS.OWNORDER, data.user_id)
                             console.log(order);
