@@ -1,7 +1,8 @@
 type Query {
-    orders: [Orders]!
-    seeownorder (order_id: Int pagination: Pagination = {}): Any
+    orders(pagination: Pagination = {}): Any
+    seeownorder (order_id:Int pagination: Pagination = {}): Any
 }
+
 
 type Mutation {
     addorder : Response3!

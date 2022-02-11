@@ -111,7 +111,76 @@ group by o.order_id;
 
 
 
+select 
+    o.order_id,
+    o.user_id,
+    o.order_time,
+    json_agg(k.product_id) as products,
+    o.ispaid,
+    json_agg(p.product_price)
+from orders o
+left join korzina k on o.order_id = k.order_id
+inner join products p on k.product_id = p.product_id
+where o.ispaid = true
+group by o.order_id;
 
+
+--TotalSumma(paid)
+select
+    o.ispaid,
+    sum(p.product_price) as TotalSumma
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = true
+group by o.ispaid;
+
+
+--TotalSumma(ispaid)
+select
+    o.ispaid,
+    sum(p.product_price) as TotalSumma
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = false
+group by o.ispaid;
+
+
+select
+    count(p.product_id)
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = true;
+
+
+select
+    p.product_id,
+    p.product_name,
+    count(k.product_id)
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = true
+group by p.product_id
+order by count DESC limit 1;
+
+select
+    p.product_id,
+    p.product_name,
+    count(k.product_id)
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = true
+group by p.product_id
+order by count limit 1;
+
+
+select * from orders o right join korzina k on 
+k.order_id = o.order_id
+ where ispaid = true;
 
 
 ---------EDITS

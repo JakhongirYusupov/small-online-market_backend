@@ -71,9 +71,16 @@ export default {
                     if (user) {
                         const [data] = await model(MODELS.USERADMIN, user.user_id, user.user_name)
                         if (data) {
-                            const statistics = await model(MODELS.STATISTICS)
-                            if (statistics) return statistics
-                            return { message: "Not foun any orders" }
+                            const paidsum = await model(MODELS.TotalSummaPaid)
+                            const ispaidsum = await model(MODELS.TotalSummaIsPaid)
+                            const mostsold = await model(MODELS.MOSTSOLDPRODUCT)
+                            const leastsold = await model(MODELS.LEASTSOLDPRODUCT)
+                            return {
+                                paidsum,
+                                ispaidsum,
+                                mostsold,
+                                leastsold
+                            }
                         }
                     }
                 }

@@ -29,13 +29,61 @@ select
 from users where user_name = $1 and user_password = crypt($2, user_password)
 `
 
-const STATISTICS = `
-select * from orders;
+
+const TotalSummaPaid = `
+select
+    o.ispaid,
+    sum(p.product_price) as TotalSumma
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = true
+group by o.ispaid;
+`
+
+const TotalSummaIsPaid = `
+select
+    o.ispaid,
+    sum(p.product_price) as TotalSumma
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = false
+group by o.ispaid;
+`
+
+const MOSTSOLDPRODUCT = `
+select
+    p.product_id,
+    p.product_name,
+    count(k.product_id)
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = true
+group by p.product_id
+order by count DESC limit 1;
+`
+
+const LEASTSOLDPRODUCT = `
+select
+    p.product_id,
+    p.product_name,
+    count(k.product_id)
+from korzina k 
+left join orders o on k.order_id = o.order_id
+left join products p on k.product_id = p.product_id
+where o.ispaid = true
+group by p.product_id
+order by count limit 1;
 `
 
 
 export default {
-    STATISTICS,
+    TotalSummaIsPaid,
+    LEASTSOLDPRODUCT,
+    MOSTSOLDPRODUCT,
+    TotalSummaPaid,
     USERADMIN,
     LOGIN,
     ADMIN,
