@@ -19,7 +19,7 @@ select
     user_name,
     user_contact,
     user_email
-from users where user_id = $1 and user_name = $2;
+from users where user_id = $1 and user_name = $2 and user_role = true;
 `
 
 

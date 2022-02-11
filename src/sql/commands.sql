@@ -144,6 +144,32 @@ group by o.order_id;
 
 --orders
 
+update products p set 
+category_id = (
+    case when length(null) > 0 then 3 else p.category_id end
+), 
+product_name = (
+    case when length('Good') > 0 then 'h' else p.product_name end
+),
+product_price = (
+    case when null > 0 then 3141 else p.product_price end
+),
+product_short_desc = (
+    case when length(null) > 0 then 'h' else p.product_short_desc end
+),
+product_long_desc = (
+    case when length(null) > 0 then 'h' else p.product_long_desc end
+),
+product_picture = (
+    case when length(null) > 0 then 'h' else p.product_picture end
+)   
+where p.product_id = 16 returning *;
+
+select * from products where product_id = $1;
+
+
+
+
 -- select * from orders;
 
 

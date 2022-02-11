@@ -15,13 +15,13 @@ type Mutation {
     deleteproduct (product_id: Int!): Response2!
 
     editproduct (
+    product_id: Int!
     category_id: Int
     product_name: String
     product_price: Int
     product_short_desc: String
     product_long_desc: String
     file: Upload
-    product_id: Int
     ): Response2!
 }
 
